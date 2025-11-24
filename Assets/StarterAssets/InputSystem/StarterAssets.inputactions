@@ -28,7 +28,7 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "8c4abdf8-4099-493a-aa1a-129acec7c3df",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -52,9 +52,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "EnGuardia",
+                    "name": "Equipar",
                     "type": "Button",
-                    "id": "757a4822-7559-46d0-b1b2-1bbcb317dc6c",
+                    "id": "fe7c4fa2-06da-4525-bd8e-0cac1e58b9bb",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -251,12 +251,12 @@
                 },
                 {
                     "name": "",
-                    "id": "b7171df5-b1ef-4c02-9c92-2d3c5910abac",
-                    "path": "<Mouse>/rightButton",
+                    "id": "9a367bfc-936d-43a2-b05d-0a50e920fed5",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";KeyboardMouse",
-                    "action": "EnGuardia",
+                    "groups": "",
+                    "action": "Equipar",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

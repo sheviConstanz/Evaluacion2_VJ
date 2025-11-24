@@ -643,38 +643,6 @@ LightProbeGroup:
   - {x: 7.1518564, y: 2.7763042, z: -11.2319765}
   - {x: 8.993203, y: 2.3566551, z: -8.796325}
   m_Dering: 1
---- !u!1 &955100098
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 955100099}
-  m_Layer: 0
-  m_Name: AnclaArmaCinto
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &955100099
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 955100098}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1912835442}
-  m_Father: {fileID: 1049246920}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1008879618
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -744,7 +712,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 475456, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 955100099}
+      addedObject: {fileID: 1692226607}
     - targetCorrespondingSourceObject: {fileID: 483532, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1638848201}
@@ -983,11 +951,43 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.8321636, y: -0.3203334, z: 0.058179524, w: 0.44889373}
   m_LocalPosition: {x: -0.091952324, y: 0.09568226, z: 5.200967}
-  m_LocalScale: {x: 63.999958, y: 79.99996, z: 79.99994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1916983346}
   m_LocalEulerAnglesHint: {x: -134.77899, y: 33.076996, z: -56.207}
+--- !u!1 &1692226606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1692226607}
+  m_Layer: 0
+  m_Name: AnclaArmaCinto
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1692226607
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692226606}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.080867894, y: -0.06401804, z: -0.8803103, w: 0.46305066}
+  m_LocalPosition: {x: -21.399998, y: 12.899999, z: 24.100002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1912835442}
+  m_Father: {fileID: 1049246920}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1762682258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1044,6 +1044,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerArmature
       objectReference: {fileID: 0}
+    - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      propertyPath: arma
+      value: 
+      objectReference: {fileID: 1912835443}
+    - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      propertyPath: anclaMano
+      value: 
+      objectReference: {fileID: 1638848201}
+    - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      propertyPath: anclaCinto
+      value: 
+      objectReference: {fileID: 1692226607}
+    - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      propertyPath: inputAtacar
+      value: 
+      objectReference: {fileID: 7098506261190240481, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}
+    - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      propertyPath: inputEquipar
+      value: 
+      objectReference: {fileID: -5235671128216349332, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}
     - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: GroundLayers.m_Bits
       value: 1
@@ -1443,7 +1463,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 955100099}
+    m_TransformParent: {fileID: 1692226607}
     m_Modifications:
     - target: {fileID: 195570, guid: e7196d0541b91bf4f8cab39924cb6d49, type: 3}
       propertyPath: m_Name
@@ -1451,43 +1471,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 496414, guid: e7196d0541b91bf4f8cab39924cb6d49, type: 3}
       propertyPath: m_LocalScale.x
-      value: 63.99999
+      value: 84
       objectReference: {fileID: 0}
     - target: {fileID: 496414, guid: e7196d0541b91bf4f8cab39924cb6d49, type: 3}
       propertyPath: m_LocalScale.y
-      value: 79.999954
+      value: 84
       objectReference: {fileID: 0}
     - target: {fileID: 496414, guid: e7196d0541b91bf4f8cab39924cb6d49, type: 3}
       propertyPath: m_LocalScale.z
-      value: 79.99996
+      value: 84
       objectReference: {fileID: 0}
     - target: {fileID: 496414, guid: e7196d0541b91bf4f8cab39924cb6d49, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 496414, guid: e7196d0541b91bf4f8cab39924cb6d49, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 496414, guid: e7196d0541b91bf4f8cab39924cb6d49, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 24.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 496414, guid: e7196d0541b91bf4f8cab39924cb6d49, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.4630506
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 496414, guid: e7196d0541b91bf4f8cab39924cb6d49, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.08086787
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 496414, guid: e7196d0541b91bf4f8cab39924cb6d49, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.06401806
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 496414, guid: e7196d0541b91bf4f8cab39924cb6d49, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.8803103
+      value: -0.000000013038514
       objectReference: {fileID: 0}
     - target: {fileID: 496414, guid: e7196d0541b91bf4f8cab39924cb6d49, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1517,9 +1537,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 195570, guid: e7196d0541b91bf4f8cab39924cb6d49, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1912835445}
-    - targetCorrespondingSourceObject: {fileID: 195570, guid: e7196d0541b91bf4f8cab39924cb6d49, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1912835446}
   m_SourcePrefab: {fileID: 100100000, guid: e7196d0541b91bf4f8cab39924cb6d49, type: 3}
 --- !u!4 &1912835442 stripped
 Transform:
@@ -1552,21 +1569,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.15, y: 1.35, z: 0.05188277}
   m_Center: {x: 0, y: 0.8, z: 0}
---- !u!114 &1912835446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1912835443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3a9fdc24fe8b1147b90a74eb2e5dcc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objetoEspada: {fileID: 0}
-  anclaCinto: {fileID: 0}
-  anclaMano: {fileID: 0}
 --- !u!4 &1916983346 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 483532, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}
@@ -1752,7 +1754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objetoEspada: {fileID: 1912835443}
-  anclaCinto: {fileID: 955100099}
+  anclaCinto: {fileID: 1692226607}
   anclaMano: {fileID: 1638848201}
 --- !u!1 &2114283753834967212
 GameObject:
