@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 8cd63dfe426baaf42937ca22a6c4dba5, type: 3}
       propertyPath: m_Name
-      value: Dummy
+      value: DummyModel
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8cd63dfe426baaf42937ca22a6c4dba5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -94,7 +94,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saludMaxima: 100
-  saludActual: 0
+  saludActual: 100
+  animator: {fileID: 830218584953583467}
+  audioSource: {fileID: 0}
+  col: {fileID: 985874326083197060}
+  sonidoGolpe: {fileID: 0}
+  sonidoMuerte: {fileID: 0}
+  tiempoRespawn: 5
 --- !u!136 &985874326083197060
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -153,15 +159,15 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6159596002769230374}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 77f7be23cdeb7184981b660574abb295, type: 2}
+  m_Controller: {fileID: 9100000, guid: 18a1e6167e4bafe44947a17228899508, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
+  m_AnimatePhysics: 1
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -182,13 +188,13 @@ MonoBehaviour:
   alGolpearObjetivo:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1315171395572989293}
-        m_TargetAssemblyTypeName: ControladorDummy, Assembly-CSharp
-        m_MethodName: RecibirDanio
+      - m_Target: {fileID: 11500000, guid: 504614a5693069a4d9b42e6909062493, type: 3}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
