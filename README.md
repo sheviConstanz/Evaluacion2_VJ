@@ -1,8 +1,11 @@
 # Evaluacion2_VJ
 
 Integrantes:
+
 -Sebastián Constanzo
+
 -Bastián Núñez
+
 -Rodrigo Sánchez
 
 
