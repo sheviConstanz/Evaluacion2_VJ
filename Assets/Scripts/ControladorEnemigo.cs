@@ -1,92 +1,143 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ControladorEnemigo : MonoBehaviour
 {
-    
-        public int rutina;
-        public float cronometro;
-        public Animator ani;
-        public Quaternion angulo;
-        public float grado;
+    [Header("Componentes")]
+    public Animator ani;
+    public NavMeshAgent agent;
 
-         public GameObject target;
-         public bool atacando;
-         void OntriggerEnter(Collider coll)
-            {
-                if (coll.CompareTag("arma"))
-                {
-                    print("Daño");
-                }
-            }
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("Objetivo")]
+    public Transform target;         
+    private VidaJugador vidaJugador;
+
+    [Header("Detección")]
+    public float distanciaDeteccion = 12f; 
+    public float distanciaAtaque = 2.5f;    
+
+    [Header("Persecución")]
+    public float distanciaOlvido = 30f;     
+    private bool haVistoAlJugador = false;
+
+    [Header("Ataque")]
+    public float danio = 12f;
+    public float tiempoEntreAtaques = 1.2f; 
+    private float tiempoProximoAtaque = 0f; 
+
     void Start()
     {
-        ani=GetComponent<Animator>();
-        target = GameObject.Find("PlayerArmature");
-    }
-    public void Comportamiento_Enemigo()
-    {
-        if(Vector3.Distance(transform.position, target.transform.position) > 5)
-        {
-            ani.SetBool("run",false);
+        if (ani == null)
+            ani = GetComponent<Animator>();
 
-     cronometro += 1 * Time.deltaTime;
-     if (cronometro >= 4)
+        if (agent == null)
+            agent = GetComponent<NavMeshAgent>();
+
+        GameObject playerGO = GameObject.FindWithTag("Player");
+        if (playerGO != null)
         {
-            rutina = Random.Range(0,2);
-            cronometro = 0;   
-        }
-        switch (rutina)
-        {
-            case 0:
-                ani.SetBool("walk",false);
-                break;
-            case 1:
-                grado = Random.Range(0,360);
-                angulo = Quaternion.Euler(0,grado,0);
-                rutina++;
-                break;
-            case 2:
-                transform.rotation =   Quaternion.RotateTowards(transform.rotation, angulo, 0.5f);
-                transform.Translate(Vector3.forward* 0.5f * Time.deltaTime);
-                ani.SetBool("walk",true);
-                break;
-                    
-        }
+            target = playerGO.transform;
+            vidaJugador = playerGO.GetComponent<VidaJugador>();
         }
         else
-        {   
-            if(Vector3.Distance(transform.position,target.transform.position) > 1 && !atacando) 
-            {
-                var lookPos = target.transform.position - transform.position;
-                lookPos.y = 0;
-                var rotation = Quaternion.LookRotation(lookPos);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
-                ani.SetBool("walk",false);
+        {
+            Debug.LogError("NO se encontró ningún objeto con tag 'Player'");
+        }
 
-                ani.SetBool("run",true);
-                transform.Translate(Vector3.forward * 1 * Time.deltaTime);
-                
-                ani.SetBool("attack",false);
+        // que se acerque lo suficiente
+        agent.stoppingDistance = distanciaAtaque * 0.9f;
+    }
+
+    void Update()
+    {
+        IA();
+    }
+
+    void IA()
+    {
+        if (target == null) return;
+
+        // si el jugador está muerto  enemigo quieto
+        if (vidaJugador != null && vidaJugador.estaMuerto)
+        {
+            ani.SetBool("run", false);
+            ani.SetBool("attack", false);
+            agent.isStopped = true;
+            return;
+        }
+
+        float distancia = Vector3.Distance(transform.position, target.position);
+
+        // Aun no ha visto al jugador: solo se activa cuando entras en distanciaDeteccion
+        if (!haVistoAlJugador)
+        {
+            if (distancia <= distanciaDeteccion)
+            {
+                haVistoAlJugador = true;  
             }
             else
             {
-                ani.SetBool("walk",false);
-                ani.SetBool("run",false);
+                // sigue en idle
+                ani.SetBool("run", false);
+                ani.SetBool("attack", false);
+                agent.isStopped = true;
+                return;
+            }
+        }
 
-                ani.SetBool("attack",true);
-                atacando = true;
+        //  si ya te vio, te olvida solo si estás MUY lejos
+        if (haVistoAlJugador && distancia > distanciaOlvido)
+        {
+            haVistoAlJugador = false;
+            ani.SetBool("run", false);
+            ani.SetBool("attack", false);
+            agent.isStopped = true;
+            return;
+        }
+
+        //  perseguir o atacar
+        if (distancia > distanciaAtaque)
+        {
+        
+            ani.SetBool("run", true);
+            ani.SetBool("attack", false);
+
+            agent.isStopped = false;
+            agent.SetDestination(target.position);
+        }
+        else
+        {
+            // EN RANGO DE ATAQUE
+            ani.SetBool("run", false);
+            ani.SetBool("attack", true);  
+
+            agent.isStopped = true;
+
+            // mirar hacia el jugador
+            Vector3 lookDir = target.position - transform.position;
+            lookDir.y = 0;
+            if (lookDir != Vector3.zero)
+            {
+                Quaternion rot = Quaternion.LookRotation(lookDir);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * 10f);
+            }
+
+            //aplicar daño cada cierto tiempo mientras esté cerca (quieto o moviéndose)
+            if (Time.time >= tiempoProximoAtaque && vidaJugador != null)
+            {
+                // verifica que siga cerca antes de pegar
+                if (Vector3.Distance(transform.position, target.position) <= distanciaAtaque + 0.5f)
+                {
+                    vidaJugador.RecibirDanio(danio);
+                }
+
+                tiempoProximoAtaque = Time.time + tiempoEntreAtaques;
             }
         }
     }
+
+    // para evitar errores si la animación llama a este evento
     public void Final_Ani()
     {
-        ani.SetBool("attack",false);
-        atacando = false;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        Comportamiento_Enemigo();
+        // no hace nada
     }
 }
