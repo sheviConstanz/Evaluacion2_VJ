@@ -1,4 +1,4 @@
-# Evaluacion2_VJ
+# Evaluacion3_DesarrolloDeVideojuegos
 
 Integrantes:
 
@@ -10,3 +10,4 @@ Integrantes:
 
 
 El escenario se llama "Escena_inicial" y se encuentra en la carpeta Assets\Scenes 
+
